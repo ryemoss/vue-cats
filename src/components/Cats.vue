@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <ul>
-      <li v-for="cat in cats" >
+      <li v-for="cat in cats">
         <div class="card-master" v-on:click="cat.show = !cat.show">
           <h2>{{ cat.name }}</h2>
           <div class="card-details" v-show="cat.show">
@@ -21,7 +21,25 @@
       </li>
     </ul>
     <div>
-      <button @click="addCat()">ADD CAT</button>
+      <button class="inputbtn" @click="addCat()" v-show="!addingCat">ADD CAT</button>
+    </div>
+    <div class="addCatForm" v-show="addingCat">
+      <form>
+        <label>Name</label>
+        <input type="text" v-model="addedCat.name"/>
+        <label>Breed</label>
+        <input type="text" v-model="addedCat.breed"/>
+        <label>Gender</label>
+        <input type="text" v-model="addedCat.gender" list="genders"/>
+        <datalist id="genders">
+          <option value="Male"></option>
+          <option value="Female"></option>
+        </datalist>
+        <label>Age</label>
+        <input type="number"/>
+        <!--<input type="submit" value="SUBMIT"/>-->
+      </form>
+      <button class="inputbtn" @click="submitCat()">SUBMIT</button>
     </div>
   </div>
 </template>
@@ -35,7 +53,9 @@ export default {
         {name: 'Meteor', breed: 'Long Hair', gender: 'female', age: '3 years', pic: 'blankcat.png', show: false},
         {name: 'Jax', breed: 'Hairless', gender: 'male', age: '8 months', pic: 'blankcat.png', show: false},
         {name: 'Moose', breed: 'Calico', gender: 'female', age: '9 years', pic: 'blankcat.png', show: false}
-      ]
+      ],
+      addingCat: false,
+      addedCat: {name: '', breed: '', gender: '',  age: '', pic:'', show: true}
     }
   },
   methods: {
@@ -46,7 +66,13 @@ export default {
       }
     },
     addCat(){
-
+      this.addingCat = !this.addingCat;
+    },
+    submitCat(){
+      if (this.addedCat.pic === '')
+        this.addedCat.pic = 'blankcat.png';
+      this.cats.push(this.addedCat);
+      this.addCat();
     }
   }
 }
@@ -79,7 +105,27 @@ li{
   text-align: center;
   border-radius: 5px;
   padding: 4px;
-  margin: 10px;
+  margin: 10px 0;
+  min-width: 555px;
+}
+form{
+  text-align: left;
+}
+input{
+  width: 100%;
+  margin-bottom: 3px;
+}
+label{
+  font-size: 12px;
+}
+input[type=submit],
+.inputbtn{
+  margin-top: 15px;
+  width: 50%;
+  border: none;
+  background: @black;
+  color: white;
+  font-family: inherit;
 }
 .banner{
   background-color: @dark;
@@ -120,6 +166,7 @@ li{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border: 2px solid lightgray;
   }
 }
 .card-details{
@@ -133,5 +180,12 @@ li{
 }
 .catinfo{
   margin-left: 20px;
+}
+.addCatForm{
+  padding: 10px 24px 20px;
+  background-color: lightgray;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 0 auto;
 }
 </style>
