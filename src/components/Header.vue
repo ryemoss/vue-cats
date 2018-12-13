@@ -2,6 +2,10 @@
   <div class="appheader">
     <h1>{{ head }}</h1>
     <h4>{{ underhead }}</h4>
+    <nav>
+      <button class="weblink" onclick="window.location.href='/'">HOME</button>
+      <button class="weblink" onclick="window.location.href='/directory'">DIRECTORY</button>
+    </nav>
   </div>
 </template>
 
@@ -27,10 +31,5 @@ h4{
   color: white;
   font-weight: 200;
   margin: 14px;
-}
-.appheader{
-  height: 120px;
-  background-color: dimgray;
-  margin: 0;
 }
 </style>

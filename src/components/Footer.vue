@@ -1,7 +1,7 @@
 <template>
   <footer>
     <p>
-      {{ copyright }}
+      {{ copyright }} <a href="https://github.com/ryemoss/vue-cats" target='blank'>VueJSCats</a>
     </p>
   </footer>
 </template>
@@ -10,23 +10,16 @@
 export default {
   data () {
     return {
-      copyright: 'Copyright 2018 VueJSCats'
+      copyright: 'Copyright © 2018 '
     }
   },
 }
 </script>
 
 <style scoped>
-  footer{
-    display: flex;
-    font-size: 12px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    color: #666;
-    background-color: #222;
-    justify-content: center;
-    align-items: center;
-  }
+a{
+  text-decoration: none;
+  color: #444;
+}
+
 </style>

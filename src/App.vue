@@ -1,11 +1,6 @@
 <template>
-  <div class="appmain">
-    <app-header></app-header>
-    <div class="banner">
-      <h3>{{ title }}</h3>
-    </div>
-    <cats></cats>
-    <app-footer></app-footer>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -13,7 +8,6 @@
 import Footer from './components/Footer.vue';
 import Header from './components/Header.vue';
 import Cats from './components/Cats.vue';
-
 export default {
   components:{
     'app-header': Header,
@@ -26,6 +20,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style>
