@@ -18,8 +18,8 @@ export default {
 
 <style scoped>
 a{
+  background-color: none;
   text-decoration: none;
-  color: #444;
+  color: #777;
 }
-
 </style>

@@ -3,8 +3,8 @@
     <h1>{{ head }}</h1>
     <h4>{{ underhead }}</h4>
     <nav>
-      <button class="weblink" onclick="window.location.href='/'">HOME</button>
-      <button class="weblink" onclick="window.location.href='/directory'">DIRECTORY</button>
+      <router-link class="weblink" to="/">HOME</router-link>
+      <router-link class="weblink" to="/directory">DIRECTORY</router-link>
     </nav>
   </div>
 </template>
